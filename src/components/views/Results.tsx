@@ -48,13 +48,16 @@ const Results = () => {
         'flex flex-col gap-2 mt-4 w-full max-w-2xl overflow-hidden transition-[max-height] duration-1000 ease-in-out',
         loading || (results?.length ?? 0 > 0) ? 'max-h-[100vh]' : 'max-h-0'
       )}>
-        {loading && Array(5).fill({}).map(joke =>
-          <Result key={joke.joke} joke={joke} />
+        {loading && Array(5).fill({}).map((joke, index) =>
+          <Result key={`${joke.joke}-${index}`} joke={joke} />
         )}
-        {results?.map(joke => (
-          <Result key={joke.joke} joke={joke} />
+        {results?.map((joke, index) => (
+          <Result key={`${joke.joke}-${index}`} joke={joke} />
         ))}
       </div>
+      {results?.length === 0 &&
+        <div className='text-sm italic'>Whoops, something went wrong, try again!</div>
+      }
     </>
   )
 }
