@@ -16,7 +16,7 @@ const Results = () => {
   const handleGenerate = async () => {
     try {
       setLoading(true)
-      setResults([])
+      setResults(undefined)
       const response = await fetch('/api/generate', { method: 'post', body: JSON.stringify({ context: prompt }) }).then(res => res.json())
       const jokes = response.jokes
       setResults(jokes)
