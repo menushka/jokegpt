@@ -1,6 +1,7 @@
 import { Results } from '@/components/views/Results'
 import { Github, Moon, Sun, Twitter } from 'lucide-react'
 import { DarkModeSwitch } from '@/components/views/DarkModeSwitch'
+import { site } from '@/config/site'
 import Link from 'next/link'
 
 // Copied from src/app/layout.tsx
@@ -19,12 +20,20 @@ export default function Home() {
           <DarkModeSwitch />
           <Moon className='stroke-[hsl(var(--foreground))]' />
         </div>
-        <Link
-          className='w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-transform hover:scale-110'
-          href='https://github.com/menushka'
-        >
-          <Github className='stroke-[hsl(var(--foreground))]' />
-        </Link>
+        <div className='flex gap-2'>
+          <Link
+            className='w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-transform hover:scale-110'
+            href={site.links.github}
+          >
+            <Github className='stroke-[hsl(var(--foreground))]' />
+          </Link>
+          <Link
+            className='w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-transform hover:scale-110'
+            href={site.links.twitter}
+          >
+            <Twitter className='stroke-[hsl(var(--foreground))]' />
+          </Link>
+        </div>
       </div>
     </main>
   )

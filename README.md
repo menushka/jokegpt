@@ -2,7 +2,7 @@
 
 JokeGPT is a web application built with Next.js, a popular React-based framework, coupled with an AI backend. It lets users input short prompts and uses them to generate a humorous responses. Behind the scenes, JokeGPT leverages AI language models (trained on a large corpus of internet text) to craft unique jokes based on user prompts.
 
-![cover](./public/screenshot.png)
+![cover](./public/og.jpg)
 
 ## Getting Started
 

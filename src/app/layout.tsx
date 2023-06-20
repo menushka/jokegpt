@@ -4,33 +4,45 @@ import { Inter } from 'next/font/google'
 import { THEME_KEY, Theme } from '@/data/theme'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
+import { site } from '@/config/site'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const title = 'JokeGPT'
-const description = 'Your number one source for original, ai-plagiarized humor!'
-
 export const metadata: Metadata = {
-  title,
-  description,
+  title: {
+    default: site.name,
+    template: `%s | ${site.name}`,
+  },
+  description: site.description,
   keywords: ['Joke', 'GPT', 'AI'],
-  authors: [{ name: 'Menushka Weeratunga', url: 'https://menushka.ca' }],
-  metadataBase: new URL('https://jokegpt.io'),
+  authors: [
+    {
+      name: "Menushka Weeratunga",
+      url: "https://menushka.ca",
+    },
+  ],
+  creator: "Menushka Weeratunga",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
   openGraph: {
-    title,
-    description,
-    url: '/',
-    siteName: 'JokeGPT',
-    images: '/screenshot.png',
-    locale: 'en_US',
-    type: 'website',
+    type: "website",
+    locale: "en_US",
+    url: site.url,
+    title: site.name,
+    description: site.description,
+    siteName: site.name,
   },
   twitter: {
-    card: 'summary_large_image',
-    title,
-    description,
-    creator: '@menushkaDev',
-    images: '/screenshot.png',
+    card: "summary_large_image",
+    title: site.name,
+    description: site.description,
+    images: [`${site.url}/og.jpg`],
+    creator: "@menushkaDev",
+  },
+  icons: {
+    icon: "/favicon.ico",
   },
 }
 
