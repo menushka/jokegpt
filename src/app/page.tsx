@@ -1,11 +1,35 @@
 import { Results } from '@/components/views/Results'
-import { Github, Moon, Sun, Twitter } from 'lucide-react'
+import { Github, Moon, Sun } from 'lucide-react'
 import { DarkModeSwitch } from '@/components/views/DarkModeSwitch'
 import Link from 'next/link'
+import { Metadata } from 'next'
 
-// Copied from src/app/layout.tsx
 const title = 'JokeGPT'
 const description = 'Your number one source for original, ai-plagiarized humor!'
+
+export const metadata: Metadata = {
+  title,
+  description,
+  keywords: ['Joke', 'GPT', 'AI'],
+  authors: [{ name: 'Menushka Weeratunga', url: 'https://menushka.ca' }],
+  metadataBase: new URL('https://jokegpt.io'),
+  openGraph: {
+    title,
+    description,
+    url: '/',
+    siteName: 'JokeGPT',
+    images: '/screenshot.png',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    creator: '@menushkaDev',
+    images: '/screenshot.png',
+  },
+}
 
 export default function Home() {
   return (
