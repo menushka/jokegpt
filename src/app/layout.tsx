@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import { cookies } from 'next/headers'
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import { THEME_KEY, Theme } from '@/data/theme'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
@@ -56,7 +57,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={clsx(isDarkMode && 'dark')}>
       <head />
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
