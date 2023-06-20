@@ -24,12 +24,14 @@ export default function Home() {
           <Link
             className='w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-transform hover:scale-110'
             href={site.links.github}
+            aria-label="Visit github repo"
           >
             <Github className='stroke-[hsl(var(--foreground))]' />
           </Link>
           <Link
             className='w-10 h-10 rounded-full flex justify-center items-center cursor-pointer transition-transform hover:scale-110'
             href={site.links.twitter}
+            aria-label="Visit creator twitter account"
           >
             <Twitter className='stroke-[hsl(var(--foreground))]' />
           </Link>

@@ -33,6 +33,7 @@ const DarkModeSwitch = () => {
     <Switch
       checked={checked}
       onCheckedChange={updateDarkMode}
+      aria-label='switch theme'
     />
   )
 }
