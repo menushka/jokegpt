@@ -17,7 +17,7 @@ specifiers:
   js-cookie: ^3.0.5
   lucide-react: ^0.241.0
   next: 13.4.5
-  next-cookie-everywhere: ^1.0.3
+  next-cookie-everywhere: ^1.0.4
   openai: ^3.3.0
   openai-edge: ^1.1.0
   postcss: 8.4.24
@@ -41,7 +41,7 @@ dependencies:
   js-cookie: 3.0.5
   lucide-react: 0.241.0_react@18.2.0
   next: 13.4.5_react-dom@18.2.0+react@18.2.0
-  next-cookie-everywhere: 1.0.3_361768dc3d5f68732238e76295e0ad22
+  next-cookie-everywhere: 1.0.4_361768dc3d5f68732238e76295e0ad22
   openai: 3.3.0
   openai-edge: 1.1.0
   postcss: 8.4.24
@@ -2187,8 +2187,8 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: false
 
-  /next-cookie-everywhere/1.0.3_361768dc3d5f68732238e76295e0ad22:
-    resolution: {integrity: sha512-IDcVCIiMXhVMdZ03Mrb3LXe+dnkSYOPv5Hfcz+XSRNu7CW5xFfvzP2bFC0xx0jM5ZVcCIb6NfptdYi/txMInaQ==}
+  /next-cookie-everywhere/1.0.4_361768dc3d5f68732238e76295e0ad22:
+    resolution: {integrity: sha512-qBY2Y/BFx2Epwe8CzQe+tqmNfhaxIjb9s1vlhaQMmDN6JvqDk+BZkPoChZVQJ7dYCh07fnS6ZW5wHbN7JA52bQ==}
     peerDependencies:
       js-cookie: '>=3.0.0'
       next: '>=13.0.0'
