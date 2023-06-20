@@ -2,7 +2,7 @@ import { prompt } from '@/data/prompt'
 import { Configuration, OpenAIApi } from 'openai-edge'
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 import { NextResponse } from 'next/server'
-import kv from '@vercel/kv'
+import { kv } from '@vercel/kv'
 
 const config = new Configuration({
   apiKey: process.env.OPENAI_API_KEY
