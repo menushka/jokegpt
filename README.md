@@ -19,8 +19,10 @@ pnpm dev
 ## Built With
 
 - NextJS - [https://nextjs.org/](https://nextjs.org/)
+- Vercel AI SDK - [https://sdk.vercel.ai/](https://sdk.vercel.ai/)
+- TailwindCSS - [https://tailwindcss.com/](https://tailwindcss.com/)
 - shadcn/ui - [https://ui.shadcn.com/](https://ui.shadcn.com/)
-- Replicate - [https://replicate.com/](https://replicate.com/)
+- OpenAI - [https://openai.com/](https://openai.com/)
 
 ## License
 

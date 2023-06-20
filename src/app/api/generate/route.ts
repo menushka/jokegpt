@@ -1,73 +1,31 @@
+import { prompt } from '@/data/prompt'
+import { Configuration, OpenAIApi } from 'openai-edge'
+import { OpenAIStream, StreamingTextResponse } from 'ai';
 import { NextResponse } from 'next/server'
-import Replicate from 'replicate'
 
-const replicate = new Replicate({
-  auth: process.env.REPLICATE_API_TOKEN as string,
+const config = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY
 })
+const openai = new OpenAIApi(config)
 
-const example = `
-Joke: What's the best thing about Switzerland? 
-Punchline: I don't know, but the flag is a big plus.
-Joke: Did you hear about the mathematician who's afraid of negative numbers?
-Punchline: He'll stop at nothing to avoid them.
-Joke: Hear about the new restaurant called Karma?
-Punchline: There's no menu: You get what you deserve.
-Joke: How do you drown a hipster?
-Punchline: Throw him in the mainstream.
-Joke: What did the left eye say to the right eye?
-Punchline: Between you and me, something smells.
-`.trim()
-
-const prompt = (context: string) => `
-### Instruction ###
-Write 5 jokes for a general audience using the following as context.  The result should only be newline separated, no numbered lists.
-
-Example:
-${example}
-
-Context: ${context}
-
-Continue:
-`.trim()
-
-async function getResponseFromReplicate(context: string) {
-  const rawResponse = await replicate.run(
-    "replicate/vicuna-13b:6282abe6a492de4145d7bb601023762212f9ddbbe78278bd6771c8b3b2f2a13b",
-    {
-      input: {
-        prompt: prompt(context)
-      }
-    }
-  ) as string[]
-  return rawResponse.join('').trim()
-}
-
-async function getDevResponse() {
-  await new Promise(resolve => setTimeout(resolve, 3000))
-  return example
-}
+export const runtime = 'edge'
  
 export async function POST(request: Request) {
-  const body = await request.json()
-
-  const context = body.context
+  const { prompt: context } = await request.json()
 
   try {
-    const response = process.env.FAKE_RESPONSE === 'true'
-      ? await getDevResponse()
-      : await getResponseFromReplicate(context)
-
-    const regex = /Joke:\s?(.*)\nPunchline:\s?(.*)/gm
-
-    let jokes = []
-    let match
-    while ((match = regex.exec(response)) !== null) {
-      const joke = match[1]
-      const punchline = match[2]
-      jokes.push({ joke, punchline })
-    }
-
-    return NextResponse.json({ jokes })
+    const response = await openai.createCompletion({
+      model: 'text-davinci-003',
+      stream: true,
+      temperature: 1,
+      max_tokens: 256,
+      top_p: 1,
+      frequency_penalty: 0.25,
+      presence_penalty: 0.1,
+      prompt: prompt(context)
+    })
+    const stream = OpenAIStream(response)
+    return new StreamingTextResponse(stream)
   } catch (err) {
     console.error(err)
     return NextResponse.json({ error: 'Something went wrong.' })
